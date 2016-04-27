@@ -1,5 +1,6 @@
 package com.muksia.services;
 
+import com.muksia.model.Person;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -19,7 +20,7 @@ public class DictionaryService {
     }
     
     public void addWord(final String word, final String translation){
-        
+        persistenceService.updatePerson(new Person(word, "something"));
     }
 
 }
