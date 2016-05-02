@@ -1,5 +1,6 @@
 package com.muksia.services;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -9,6 +10,7 @@ import com.mongodb.util.JSON;
 import com.muksia.model.Person;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 
@@ -38,5 +40,6 @@ public class PersistenceService {
         MongoDatabase database = mongoClient.getDatabase("Dictionary");
         return database.getCollection("persons");
     }
-            
+    
+           
 }

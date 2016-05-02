@@ -28,5 +28,15 @@ public class Word {
                         .append("translation", translation)
                         .append("updated", updated));        
     }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getTranslation() {
+        return translation;
+    }
+        
+        
     
 }

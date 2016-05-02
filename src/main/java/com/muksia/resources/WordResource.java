@@ -24,7 +24,7 @@ public class WordResource {
     @GET
     public JsonObject developer(){
         dictionaryService.addWord("test", "ttttttrrrraaaa");
-        return Json.createObjectBuilder().add(dictionaryService.getRandomWordForPerson("test"), 2).build();
+        return Json.createObjectBuilder().add(dictionaryService.getRandomWordForPerson("test").get().getValue(),  2).build();
     }
     
     @GET

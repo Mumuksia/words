@@ -28,6 +28,14 @@ public class Person {
         this.comment = comment;
     }
 
+    public Person(String name, String comment, List<Word> words) {
+        this.name = name;
+        this.comment = comment;
+        this.words = words;
+    }
+    
+    
+
     public Person() {
     }
 
