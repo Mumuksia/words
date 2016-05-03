@@ -1,8 +1,7 @@
 package com.muksia.model;
 
-import com.mongodb.BasicDBObjectBuilder;
-import com.mongodb.DBObject;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -17,26 +16,16 @@ import org.bson.Document;
 @XmlRootElement
 public class Person {
     
-    private String name;
+    final private String name;
     
-    private String comment;
+    final private String comment;
     
-    private List<Word> words;
+    final private List<Word> words;
 
-    public Person(String name, String comment) {
-        this.name = name;
-        this.comment = comment;
-    }
-
-    public Person(String name, String comment, List<Word> words) {
+    public Person(final String name, final String comment, final List<Word> words) {
         this.name = name;
         this.comment = comment;
         this.words = words;
-    }
-    
-    
-
-    public Person() {
     }
 
     public String getName() {
@@ -62,6 +51,38 @@ public class Person {
     private List<Document> getWordDocuments(){
         return words.stream().map(p->p.createDocument()).collect(Collectors.toList());
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + Objects.hashCode(this.comment);
+        hash = 43 * hash + Objects.hashCode(this.words);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person other = (Person) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.comment, other.comment)) {
+            return false;
+        }
+        return Objects.equals(this.words, other.words);
+    }
+    
+    
  
     
 }

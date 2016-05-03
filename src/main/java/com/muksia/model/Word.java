@@ -9,13 +9,13 @@ import org.bson.Document;
  */
 public class Word {
     
-    private String value;
+    final private String value;
     
-    private String translation;
+    final private String translation;
     
-    private Date updated;
+    final private Date updated;
 
-    public Word(String value, String translation, Date updated) {
+    public Word(final String value, final String translation, final Date updated) {
         this.value = value;
         this.translation = translation;
         this.updated = updated;

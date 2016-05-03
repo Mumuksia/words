@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
@@ -15,7 +16,7 @@ import javax.ws.rs.PathParam;
  * @author Muksia
  */
 @RequestScoped
-@Path("developers")
+@Path("words")
 public class WordResource {
     
     @Inject
@@ -23,13 +24,15 @@ public class WordResource {
    
     @GET
     public JsonObject developer(){
-        dictionaryService.addWord("test", "ttttttrrrraaaa");
+        dictionaryService.addWord("test", "ttttttrrrraaaa", "test");
         return Json.createObjectBuilder().add(dictionaryService.getRandomWordForPerson("test").get().getValue(),  2).build();
     }
     
-    @GET
-    @Path("{first}-{last}")
-    public Person developer(@PathParam("first") String first, @PathParam("last") String last){
-        return new Person(first,last);
+    @POST
+    @Path("{word}-{translation}-{person}")
+    public JsonObject addWord(@PathParam("word") String word, @PathParam("translation") String translation, @PathParam("person") String person){
+        dictionaryService.addWord(word, translation, person);
+        return Json.createObjectBuilder().add(dictionaryService.getRandomWordForPerson(person).get().getValue(),  2).build();
     }
+
 }
