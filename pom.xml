@@ -29,6 +29,11 @@
             <artifactId>easymock</artifactId>
             <version>3.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.3.9.M1</version>
+        </dependency>
 
     </dependencies>
     <properties>
