@@ -3,6 +3,7 @@ package com.muksia.resources;
 import com.muksia.model.Person;
 import com.muksia.services.DictionaryService;
 import com.muksia.services.PersonService;
+import java.util.Date;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ import javax.ws.rs.PathParam;
  * @author yurzav
  */
 @RequestScoped
-@Path("person")
+@Path("/person")
 public class PersonResource {
     
     @Inject
@@ -29,6 +30,12 @@ public class PersonResource {
             return optPerson.get();
         }
         return null;
+    }
+    
+    @GET
+    @Path("/test")
+    public String getPerson(){
+        return new Date().toString();
     }
 
 }
